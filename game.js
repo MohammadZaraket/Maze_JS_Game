@@ -6,15 +6,19 @@ window.onload = function(){
     var end = document.getElementById("end");
     var x= document.getElementsByClassName("boundary");
     var h2 = document.getElementById("status");
+    var game_space = document.getElementById("game");
 
  
     start.onclick=startGame;
     
 
 
+
     function startGame(){
 
         resetGame();
+
+       
     
         for(var i =0; i<x.length; i++)
 
@@ -23,6 +27,7 @@ window.onload = function(){
 
         }
 
+        end.style.pointerEvents = "auto";
         end.onclick=Win;
 
     };
@@ -48,6 +53,8 @@ window.onload = function(){
 
         {
             x[i].style.backgroundColor="#eeeeee";
+            x[i].style.pointerEvents = "auto";
+            
         }
 
         h2.innerHTML = 'Begin by moving your mouse over the "S".';
@@ -60,6 +67,14 @@ window.onload = function(){
     function Win(){
 
        h2.innerHTML = "YOU WON BABY!";
+       end.style.pointerEvents = "none";
+       for(var i =0; i<x.length; i++)
+
+       {
+           x[i].style.pointerEvents = "none";
+           
+       }
+
 
     };
 
