@@ -4,6 +4,7 @@ window.onload = function(){
 
     var start = document.getElementById("start");
     var end = document.getElementById("end");
+    var x= document.getElementsByClassName("boundary");
 
  
     start.onclick=startGame;
@@ -13,6 +14,14 @@ window.onload = function(){
     function startGame(){
         
         resetColor();
+    
+
+        for(var i =0; i<x.length; i++)
+
+        {
+            x[i].onmouseover = turnRed;
+
+        }
 
 
 
@@ -23,16 +32,11 @@ window.onload = function(){
 
     function turnRed(){
 
-        
-        var x= document.getElementsByClassName("boundary");
-        var i =0;
-
-        for(i; i<x.length; i++)
+        for(var i =0; i<x.length; i++)
 
         {
             x[i].style.backgroundColor="red";
         }
-
 
     };
 
@@ -40,11 +44,7 @@ window.onload = function(){
 
     function resetColor(){
 
-        
-        var x= document.getElementsByClassName("boundary");
-        var i =0;
-
-        for(i; i<x.length; i++)
+        for(var i =0; i<x.length; i++)
 
         {
             x[i].style.backgroundColor="#eeeeee";
