@@ -7,12 +7,12 @@ window.onload = function(){
     var x= document.getElementsByClassName("boundary");
     var h2 = document.getElementById("status");
     var game_space = document.getElementById("game");
+    var y = document.getElementsByClassName("example");
 
+    var score = 0;
  
     start.onclick=startGame;
     
-
-
 
     function startGame(){
 
@@ -20,7 +20,7 @@ window.onload = function(){
 
        
     
-        for(var i =0; i<x.length; i++)
+        for(var i =0; i< 5; i++)
 
         {
             x[i].onmouseover = Lose;
@@ -30,6 +30,8 @@ window.onload = function(){
         end.style.pointerEvents = "auto";
         end.onclick=Win;
 
+     
+
     };
 
 
@@ -37,10 +39,11 @@ window.onload = function(){
 
     function turnRed(){
 
-        for(var i =0; i<x.length; i++)
+        for(var i =0; i< 5; i++)
 
         {
             x[i].style.backgroundColor="red";
+            x[i].style.pointerEvents = "none";
         }
 
     };
@@ -49,13 +52,14 @@ window.onload = function(){
 
     function resetGame(){
 
-        for(var i =0; i<x.length; i++)
+        for(var i =0; i< 5; i++)
 
         {
             x[i].style.backgroundColor="#eeeeee";
             x[i].style.pointerEvents = "auto";
             
         }
+
 
         h2.innerHTML = 'Begin by moving your mouse over the "S".';
 
@@ -68,13 +72,15 @@ window.onload = function(){
 
        h2.innerHTML = "YOU WON BABY!";
        end.style.pointerEvents = "none";
-       for(var i =0; i<x.length; i++)
+       score +=5;
+       for(var i =0; i<5; i++)
 
        {
            x[i].style.pointerEvents = "none";
            
        }
 
+       y[0].innerHTML = score;
 
     };
 
@@ -82,6 +88,9 @@ window.onload = function(){
 
         h2.innerHTML = "YOU LOST ***** !";
         turnRed();
+
+        score-=10;
+        y[0].innerHTML = score;
  
      };
 
