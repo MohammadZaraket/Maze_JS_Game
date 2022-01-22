@@ -6,20 +6,15 @@ window.onload = function(){
     var end = document.getElementById("end");
 
  
-
+    start.onclick=startGame;
+    end.onclick= turnRed;
 
 
     function startGame(){
+        
+        resetColor();
 
 
-        var x= document.getElementsByClassName("boundary");
-        var i =0;
-
-        for(i; i<x.length; i++)
-
-        {
-            x[i].style.backgroundColor="#eeeeee";
-        }
 
     };
 
@@ -43,7 +38,19 @@ window.onload = function(){
 
 
 
+    function resetColor(){
 
+        
+        var x= document.getElementsByClassName("boundary");
+        var i =0;
+
+        for(i; i<x.length; i++)
+
+        {
+            x[i].style.backgroundColor="#eeeeee";
+        }
+
+    };
 
 
 
