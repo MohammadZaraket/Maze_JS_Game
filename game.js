@@ -6,9 +6,9 @@ window.onload = function(){
     var end = document.getElementById("end");
     var x= document.getElementsByClassName("boundary");
     var h2 = document.getElementById("status");
-    var game_space = document.getElementById("game");
     var y = document.getElementsByClassName("example");
-
+    var game_space = document.getElementById("game");
+    var in_game_space = false;
     var score = 0;
  
     start.onclick=startGame;
@@ -16,7 +16,11 @@ window.onload = function(){
 
     function startGame(){
 
+
         resetGame();
+        in_game_space = true;
+
+        game_space.onmouseleave=gotOut;
 
        
     
@@ -28,7 +32,7 @@ window.onload = function(){
         }
 
         end.style.pointerEvents = "auto";
-        end.onclick=Win;
+        end.onclick=checkWin;
 
      
 
@@ -94,6 +98,23 @@ window.onload = function(){
  
      };
 
+
+     function gotOut(){
+
+        in_game_space= false;
+     }
+
+     function checkWin(){
+
+        if (in_game_space==true)
+        {
+            Win();
+        }
+        else
+        {
+            h2.innerHTML = "I know what You DID:)";
+        }
+     }
 
 
 
