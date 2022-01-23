@@ -106,6 +106,9 @@ window.onload = function(){
             boundaries[i].style.backgroundColor="red";
             boundaries[i].style.pointerEvents = "none";
         }
+       
+       // CAN BE DONE USING element.classList.add('youlose'); BUT WE USED element.style.backgroundColor="red" TO BE CONSISTENT WITH turnGreen Function
+    
 
     };
 
