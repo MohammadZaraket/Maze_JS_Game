@@ -1,7 +1,8 @@
 window.onload = function(){
 
-    // THE GAME STARTS WHEN CLICKING ON S THEN GOING INSIDE THE MAZE >>> ENDS BY CLICKING ON E
+    // THE GAME STARTS WHEN Hovering ON S THEN GOING INSIDE THE MAZE >>> ENDS BY Hovering  E
     // YOU GET +5 FOR WINNING AND -10 FOR LOOSING
+    // Clicking S is to reset the SCORE to 0
 
     var start = document.getElementById("start");
     var end = document.getElementById("end");
@@ -12,7 +13,8 @@ window.onload = function(){
     var in_game_space = false;
     var score = 0;
  
-    start.onclick=startGame;
+    start.onmouseover=startGame;
+    start.onclick=resetScore;
     
 
     function startGame(){
@@ -29,7 +31,7 @@ window.onload = function(){
         }
 
         end.style.pointerEvents = "auto";
-        end.onclick=checkWin;
+        end.onmouseover=checkWin;
 
 
     };
@@ -48,6 +50,13 @@ window.onload = function(){
 
 
         status.innerHTML = 'Begin by moving your mouse over the "S".';
+    };
+
+    function resetScore(){
+
+        score =0;
+        score_div[0].innerHTML = score;
+
     };
 
 
@@ -71,6 +80,7 @@ window.onload = function(){
     function Lose(){
 
         status.innerHTML = "YOU LOST ***** !";
+        end.style.pointerEvents = "none";
         turnRed();
 
         score-=10;
