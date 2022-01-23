@@ -1,12 +1,13 @@
 window.onload = function(){
 
-
+    // THE GAME STARTS WHEN CLICKING ON S THEN GOING INSIDE THE MAZE >>> ENDS BY CLICKING ON E
+    // YOU GET +5 FOR WINNING AND -10 FOR LOOSING
 
     var start = document.getElementById("start");
     var end = document.getElementById("end");
-    var x= document.getElementsByClassName("boundary");
-    var h2 = document.getElementById("status");
-    var y = document.getElementsByClassName("example");
+    var boundaries= document.getElementsByClassName("boundary");
+    var status = document.getElementById("status");
+    var score_div = document.getElementsByClassName("example");
     var game_space = document.getElementById("game");
     var in_game_space = false;
     var score = 0;
@@ -16,39 +17,20 @@ window.onload = function(){
 
     function startGame(){
 
-
         resetGame();
-        in_game_space = true;
 
+        in_game_space = true;
         game_space.onmouseleave=gotOut;
 
-       
-    
         for(var i =0; i< 5; i++)
 
         {
-            x[i].onmouseover = Lose;
-
+            boundaries[i].onmouseover = Lose;
         }
 
         end.style.pointerEvents = "auto";
         end.onclick=checkWin;
 
-     
-
-    };
-
-
-
-
-    function turnRed(){
-
-        for(var i =0; i< 5; i++)
-
-        {
-            x[i].style.backgroundColor="red";
-            x[i].style.pointerEvents = "none";
-        }
 
     };
 
@@ -59,42 +41,40 @@ window.onload = function(){
         for(var i =0; i< 5; i++)
 
         {
-            x[i].style.backgroundColor="#eeeeee";
-            x[i].style.pointerEvents = "auto";
+            boundaries[i].style.backgroundColor="#eeeeee";
+            boundaries[i].style.pointerEvents = "auto";
             
         }
 
 
-        h2.innerHTML = 'Begin by moving your mouse over the "S".';
-
-
-
+        status.innerHTML = 'Begin by moving your mouse over the "S".';
     };
 
 
     function Win(){
 
-       h2.innerHTML = "YOU WON BABY!";
+       status.innerHTML = "YOU WON BABY!";
        end.style.pointerEvents = "none";
+       turnGreen()
        score +=5;
-       for(var i =0; i<5; i++)
 
-       {
-           x[i].style.pointerEvents = "none";
-           
+       for(var i =0; i<5; i++){
+
+        boundaries[i].style.pointerEvents = "none";
+
        }
 
-       y[0].innerHTML = score;
+       score_div[0].innerHTML = score;
 
     };
 
     function Lose(){
 
-        h2.innerHTML = "YOU LOST ***** !";
+        status.innerHTML = "YOU LOST ***** !";
         turnRed();
 
         score-=10;
-        y[0].innerHTML = score;
+        score_div[0].innerHTML = score;
  
      };
 
@@ -104,7 +84,8 @@ window.onload = function(){
         in_game_space= false;
      }
 
-     function checkWin(){
+
+     function checkWin(){ // To check if the player clicked the END button without going inside the Maze.
 
         if (in_game_space==true)
         {
@@ -112,11 +93,30 @@ window.onload = function(){
         }
         else
         {
-            h2.innerHTML = "I know what You DID:)";
+            status.innerHTML = "I know what You DID:)";
         }
      }
 
 
+     function turnRed(){
 
+        for(var i =0; i< 5; i++)
+
+        {
+            boundaries[i].style.backgroundColor="red";
+            boundaries[i].style.pointerEvents = "none";
+        }
+
+    };
+
+    function turnGreen(){
+
+        for(var i =0; i< 5; i++)
+
+        {
+            boundaries[i].style.backgroundColor="green";
+        }
+
+    };
 
 };
